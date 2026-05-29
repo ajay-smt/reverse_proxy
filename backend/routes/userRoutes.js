@@ -74,4 +74,32 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * @route   POST /api/users/login
+ * @desc    Log in a user by email (simulated for gaming dashboard session)
+ * @access  Public
+ */
+router.post('/login', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ message: 'Please provide an email address' });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'Player profile not found. Please register first.' });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Welcome back, ${user.fullName}!`,
+      user
+    });
+  } catch (error) {
+    console.error('Error logging in:', error);
+    res.status(500).json({ message: 'Server error during login' });
+  }
+});
+
 module.exports = router;

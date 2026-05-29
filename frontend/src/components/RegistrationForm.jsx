@@ -112,7 +112,7 @@ export default function RegistrationForm({ showToast, onSuccess }) {
         
         // Call success callback to switch tabs or refresh list
         if (onSuccess) {
-          onSuccess();
+          onSuccess(response.data.user);
         }
       }
     } catch (error) {

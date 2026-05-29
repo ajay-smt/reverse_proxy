@@ -37,6 +37,22 @@ const userSchema = new mongoose.Schema(
       required: [true, 'City is required'],
       trim: true,
     },
+    balance: {
+      type: Number,
+      default: 5000,
+    },
+    totalDeposited: {
+      type: Number,
+      default: 0,
+    },
+    totalWagered: {
+      type: Number,
+      default: 0,
+    },
+    totalWon: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true, // Automatically manages createdAt and updatedAt

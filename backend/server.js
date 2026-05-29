@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const gameRoutes = require('./routes/gameRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -20,6 +21,7 @@ const path = require('path');
 
 // API Routes
 app.use('/api/users', userRoutes);
+app.use('/api', gameRoutes);
 
 // Serve Static Frontend Assets in Production
 if (process.env.NODE_ENV === 'production') {
